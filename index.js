@@ -1,32 +1,77 @@
 const { fifaData } = require('./fifa.js')
 
+//don't touch this line ^^^^^^
+
 // ⚽️ M  V P ⚽️ //
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Practice accessing data by console.log-ing the following pieces of data note, you may want to filter the data first 😉*/
 
+//filter the data
+const finals2014 = fifaData.filter(function(item){
+    return item.Year === 2014 && item.Stage === "Final";
+
+});
+
+
 //(a) Home Team name for 2014 world cup final
+
+//you need to ref the array, the desired index, the object you want
+//why do you need the 0, it's the first index 
+//console.log("- Task 1A: ", finals2014[0]["Home Team Name"]);
+
 
 //(b) Away Team name for 2014 world cup final
 
+//console.log("- Task 1B: ", finals2014[0]["Away Team Name"]);
+
+
 //(c) Home Team goals for 2014 world cup final
+
+//console.log("- Task 1C: ", finals2014[0]["Home Team Goals"]);
 
 //(d) Away Team goals for 2014 world cup final
 
+//console.log("- Task 1D: ", finals2014[0]["Away Team Goals"]);
+
 //(e) Winner of 2014 world cup final */
+
+//console.log("task 1E", finals2014[0]["Win conditions"]);
+
+
+
+//note: check that callback and parameter orders are matched up correctly
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
 1. Receive data as a parameter
-2. Return an array of objects with the data of the teams that made it to the final stage
+2. Return an array of objects with the data of the teams that made it to the ---> final <--- stage
 
 hint - you should be looking at the stage key inside of the objects
 */
+//1 param of data - an array
 
-function getFinals(/* code here */) {
-   /* code here */
+//filter() filters data into a new array
+//return statement only returns if true
+
+//data is the array of fifaData 
+//data of teams that made it to final STAGE
+
+function getFinals(array) {
+   //create a variable that filters through the given array
+   const finalsData = array.filter(function (index) {
+       //finalsData is the new array containing all the items in the original array that ..
+       //have "Final" in the stage key w/i their items
+   return index["Stage"] === "Final"; //<--- if there are instances where this is true, it will return those instances
+   });
+   return finalsData; //getFinals will return finalsData, finalsData is the function we made 
 }
+//two returns works here bc we basically have a function inside a fn
+
+console.log("- Task 2: ", getFinals(fifaData));
+//this is the callback function that you pass to every other function in the
+//questions
 
 
 
@@ -35,6 +80,7 @@ Use the higher-order function called getYears to do the following:
 1. Receive an array
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
+//try to use map()
 
 function getYears(/* code here */) {
     /* code here */
