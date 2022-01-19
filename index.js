@@ -58,34 +58,43 @@ hint - you should be looking at the stage key inside of the objects
 //data is the array of fifaData 
 //data of teams that made it to final STAGE
 
+//getFinals takes fifaData
 function getFinals(array) {
-   //create a variable that filters through the given array
-   const finalsData = array.filter(function (index) {
-       //finalsData is the new array containing all the items in the original array that ..
-       //have "Final" in the stage key w/i their items
+   //finalsData is a variable that holds a function
+   //the function filters through fifaData
+   const finalsData = array/*fifaData.filter*/.filter(function (index) { // (index) is a placeholder for all of the indexes w/i the objects inside fifaData
+       //the indexes that contain a Stage key : "Final" will return in a new array, according to .filter()
    return index["Stage"] === "Final"; //<--- if there are instances where this is true, it will return those instances
    });
-   return finalsData; //getFinals will return finalsData, finalsData is the function we made 
+   return finalsData; //getFinals will return finalsData (which has the new array)
+   
 }
 //two returns works here bc we basically have a function inside a fn
 
-console.log("- Task 2: ", getFinals(fifaData));
-//this is the callback function that you pass to every other function in the
-//questions
+//console.log("- Task 2: ", getFinals(fifaData));
+
+//this is the callback function that you pass to every other function in the questions
 
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
-Use the higher-order function called getYears to do the following: 
+Use the higher-order function <--- receives another fn --- called getYears to do the following: 
 1. Receive an array
 2. Receive a callback function getFinals from task 2 
 3. Return an array called years containing all of the years in the getFinals data set*/
 //try to use map()
 
-function getYears(/* code here */) {
-    /* code here */
+//years is an array from from finalsData array
+//finalsData array is from getFinals function
+
+function getYears(array, getFinalsCB) {
+    const years = getFinalsCB(array).map( function (index) {
+        return index.Year;
+
+    });
 }
 
+console.log("- Task 3: ", getYears(fifaData,getFinals));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
